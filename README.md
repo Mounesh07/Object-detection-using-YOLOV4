@@ -17,19 +17,22 @@ Step 5 : Process Outputs
 Step 6 : Display Results
 
 ## Program:
+```python
 import cv2
 import numpy as np
-
+```
 ### Load YOLOv4 network
+```python
 net = cv2.dnn.readNet("yolov4.weights", "yolov4.cfg")
-
+```
 ### Load the COCO class labels
+```python
 with open("coco.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers().flatten()]
-
+```
 ### Set up video capture for webcam
 ```python
 cap = cv2.VideoCapture(0)
